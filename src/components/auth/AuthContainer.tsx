@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Instagram, AlertCircle } from "lucide-react";
 import GoogleAuthButton from "./GoogleAuthButton";
@@ -9,38 +11,29 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+} from "@/src/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/src/components/ui/alert";
+import { Button } from "@/src/components/ui/button";
 
 interface AuthContainerProps {
-  onAuthSuccess?: () => void;
   onInstagramConnected?: () => void;
   error?: string;
   isLoading?: boolean;
+  isAuthenticated?: boolean;
 }
 
 const AuthContainer = ({
-  onAuthSuccess = () => {},
   onInstagramConnected = () => {},
   error = "",
   isLoading = false,
+  isAuthenticated = false,
 }: AuthContainerProps) => {
-  const [authStep, setAuthStep] = useState<"google" | "instagram">("google");
+  const [authStep, setAuthStep] = useState<"google" | "instagram">(
+    isAuthenticated ? "instagram" : "google",
+  );
   const [googleAuthError, setGoogleAuthError] = useState("");
   const [instagramError, setInstagramError] = useState("");
-  const [isGoogleAuthenticated, setIsGoogleAuthenticated] = useState(false);
   const [isInstagramConnected, setIsInstagramConnected] = useState(false);
-
-  const handleGoogleAuth = () => {
-    // Simulate Google auth process
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsGoogleAuthenticated(true);
-      setAuthStep("instagram");
-      onAuthSuccess();
-    }, 1500);
-  };
 
   const handleInstagramConnect = (credentials: {
     username: string;
@@ -85,10 +78,7 @@ const AuthContainer = ({
 
           {authStep === "google" && (
             <div className="space-y-4">
-              <GoogleAuthButton
-                onClick={handleGoogleAuth}
-                isLoading={isLoading}
-              />
+              <GoogleAuthButton isLoading={isLoading} />
 
               {googleAuthError && (
                 <Alert variant="destructive">

@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Calendar,
   BarChart3,
@@ -9,15 +11,19 @@ import {
   Instagram,
   HelpCircle,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/src/components/ui/button";
+import { Separator } from "@/src/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "@/src/components/ui/tooltip";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/src/components/ui/avatar";
 
 interface SidebarProps {
   activePage?: string;
@@ -76,7 +82,7 @@ const Sidebar = ({
         <ul className="space-y-2">
           {navItems.map((item) => (
             <li key={item.id}>
-              <Link to={item.path}>
+              <Link href={item.path}>
                 <Button
                   variant={activePage === item.id ? "default" : "ghost"}
                   className={`w-full justify-start ${activePage === item.id ? "" : "text-gray-600"}`}

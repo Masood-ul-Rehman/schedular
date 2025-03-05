@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import CalendarView from "./CalendarView";
 import AnalyticsPanel from "./AnalyticsPanel";
@@ -45,11 +46,6 @@ const Dashboard = ({
     }
   };
 
-  // Handle navigation from sidebar
-  const handleNavigation = (view: string) => {
-    setActiveView(view);
-  };
-
   return (
     <div className="flex h-screen w-full bg-background overflow-hidden">
       {/* Sidebar */}
@@ -61,11 +57,7 @@ const Dashboard = ({
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-auto">
-        {/* Render the active view or the router outlet */}
-        {renderView()}
-        <Outlet />
-      </main>
+      <main className="flex-1 overflow-auto">{renderView()}</main>
     </div>
   );
 };
