@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import "../src/index.css";
+import "../index.css";
 import { Suspense } from "react";
 import { Providers } from "./providers";
 

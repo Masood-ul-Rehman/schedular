@@ -11,19 +11,15 @@ import {
   Instagram,
   HelpCircle,
 } from "lucide-react";
-import { Button } from "@/src/components/ui/button";
-import { Separator } from "@/src/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/src/components/ui/tooltip";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/src/components/ui/avatar";
+} from "@/components/ui/tooltip";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface SidebarProps {
   activePage?: string;
@@ -85,7 +81,9 @@ const Sidebar = ({
               <Link href={item.path}>
                 <Button
                   variant={activePage === item.id ? "default" : "ghost"}
-                  className={`w-full justify-start ${activePage === item.id ? "" : "text-gray-600"}`}
+                  className={`w-full justify-start ${
+                    activePage === item.id ? "" : "text-gray-600"
+                  }`}
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>

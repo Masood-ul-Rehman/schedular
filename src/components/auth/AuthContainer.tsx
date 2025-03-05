@@ -11,9 +11,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/src/components/ui/card";
-import { Alert, AlertDescription, AlertTitle } from "@/src/components/ui/alert";
-import { Button } from "@/src/components/ui/button";
+} from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 
 interface AuthContainerProps {
   onInstagramConnected?: () => void;
@@ -29,7 +29,7 @@ const AuthContainer = ({
   isAuthenticated = false,
 }: AuthContainerProps) => {
   const [authStep, setAuthStep] = useState<"google" | "instagram">(
-    isAuthenticated ? "instagram" : "google",
+    isAuthenticated ? "instagram" : "google"
   );
   const [googleAuthError, setGoogleAuthError] = useState("");
   const [instagramError, setInstagramError] = useState("");
