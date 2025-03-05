@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import {
   Calendar,
   BarChart3,
@@ -76,10 +78,12 @@ const Sidebar = ({
         <ul className="space-y-2">
           {navItems.map((item) => (
             <li key={item.id}>
-              <Link to={item.path}>
+              <Link href={item.path}>
                 <Button
                   variant={activePage === item.id ? "default" : "ghost"}
-                  className={`w-full justify-start ${activePage === item.id ? "" : "text-gray-600"}`}
+                  className={`w-full justify-start ${
+                    activePage === item.id ? "" : "text-gray-600"
+                  }`}
                 >
                   {item.icon}
                   <span className="ml-2">{item.name}</span>

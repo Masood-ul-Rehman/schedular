@@ -1,25 +1,28 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 
 interface GoogleAuthButtonProps {
-  onClick?: () => void;
   isLoading?: boolean;
   text?: string;
   className?: string;
 }
 
 const GoogleAuthButton = ({
-  onClick = () => console.log("Google auth button clicked"),
   isLoading = false,
   text = "Sign in with Google",
   className = "",
 }: GoogleAuthButtonProps) => {
+  const handleGoogleSignIn = () => {
+    signIn("google", { callbackUrl: "/dashboard" });
+  };
+
   return (
     <Button
       variant="outline"
       size="lg"
       className={`w-full flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 ${className}`}
-      onClick={onClick}
+      onClick={handleGoogleSignIn}
       disabled={isLoading}
     >
       {isLoading ? (
