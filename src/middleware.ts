@@ -5,6 +5,7 @@ import { NextRequest } from "next/server";
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request });
   const isAuthenticated = !!token;
+  console.log(token, "this is token");
 
   // Check if the request is for the dashboard
   if (request.nextUrl.pathname.startsWith("/dashboard")) {
