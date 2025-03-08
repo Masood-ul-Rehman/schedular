@@ -12,7 +12,7 @@ const Home = () => {
   const [isInstagramConnected, setIsInstagramConnected] = useState(false);
   const [authError, setAuthError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(authError, "this is auth error");
   // Check if Instagram is connected (from localStorage)
   useEffect(() => {
     const checkInstagramStatus = () => {
